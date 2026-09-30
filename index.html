@@ -534,10 +534,86 @@ button,.tab,.buy,.sell,.caseOpen{touch-action:manipulation}
  .dealerGrid,.garageGrid,.storageGrid,#containerGrid{gap:8px!important}
 }
 
+
+/* v0.0.40 — global chat */
+.chatStatus{font-size:12px;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.chatMessages{height:min(58vh,560px);overflow-y:auto;border:1px solid var(--line);border-radius:16px;padding:10px;background:var(--card);display:flex;flex-direction:column;gap:8px}
+.chatMsg{padding:9px 11px;border:1px solid var(--line);border-radius:13px;background:var(--bg)}
+.chatMsgHead{display:flex;gap:7px;align-items:center;justify-content:space-between;margin-bottom:4px}
+.chatName{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chatTime{font-size:11px;color:var(--muted);flex:0 0 auto}
+.chatText{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.35}
+.chatComposer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:9px}
+.chatComposer input{width:100%;min-width:0}
+.chatComposer button{width:auto;min-width:110px}
+.chatEmpty{text-align:center;color:var(--muted);padding:24px 8px}
+.chatHint{font-size:11px;margin-top:6px}
+@media(max-width:520px){
+ .chatMessages{height:55vh;padding:7px;border-radius:14px}
+ .chatMsg{padding:8px 9px}
+ .chatComposer{grid-template-columns:1fr}
+ .chatComposer button{width:100%}
+}
+
+
+/* v0.0.41 — messenger-style chat */
+#chatPage{padding-bottom:0!important}
+.chatShell{width:min(100%,860px);height:min(72vh,720px);min-height:500px;margin:0 auto;display:grid;grid-template-rows:auto minmax(0,1fr) auto;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card)}
+.chatTop{display:flex;align-items:center;gap:11px;padding:13px 15px;border-bottom:1px solid var(--line);background:var(--card);min-width:0}
+.chatTopIcon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:21px;background:var(--bg);border:1px solid var(--line);flex:0 0 auto}
+.chatTopText{min-width:0;flex:1}
+.chatTopText h2{font-size:17px!important;line-height:1.1;margin:0 0 3px!important}
+.chatSubtitle{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chatStatus{display:flex;align-items:center;gap:6px;flex:0 0 auto;font-size:11px;padding:6px 9px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--bg)}
+.chatStatusDot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.chatMessages{height:auto!important;min-height:0!important;overflow-y:auto!important;border:0!important;border-radius:0!important;padding:14px!important;background:var(--bg)!important;display:flex!important;flex-direction:column!important;gap:10px!important;scroll-behavior:smooth}
+.chatMsg{display:grid!important;grid-template-columns:34px minmax(0,1fr)!important;gap:8px!important;align-items:end!important;max-width:min(78%,620px)!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;align-self:flex-start}
+.chatAvatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:900;border:1px solid var(--line);background:var(--card);user-select:none}
+.chatBubble{min-width:0;padding:8px 11px 7px;border:1px solid var(--line);border-radius:15px 15px 15px 4px;background:var(--card)}
+.chatMsgHead{display:flex!important;gap:8px!important;align-items:baseline!important;justify-content:flex-start!important;margin:0 0 3px!important}
+.chatName{font-size:11px;font-weight:900!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chatTime{font-size:9px!important;color:var(--muted)!important;flex:0 0 auto!important}
+.chatText{font-size:14px;white-space:pre-wrap!important;overflow-wrap:anywhere!important;line-height:1.35!important}
+.chatMsg.mine{grid-template-columns:minmax(0,1fr)!important;align-self:flex-end!important}
+.chatMsg.mine .chatAvatar{display:none}
+.chatMsg.mine .chatBubble{border-radius:15px 15px 4px 15px;background:var(--accent);color:#fff;border-color:transparent}
+.chatMsg.mine .chatName,.chatMsg.mine .chatTime{color:rgba(255,255,255,.72)}
+.chatEmpty{margin:auto;text-align:center;color:var(--muted);padding:28px 10px;display:flex;flex-direction:column;align-items:center;gap:5px}
+.chatEmptyIcon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);font-size:25px;margin-bottom:4px}
+.chatEmpty b{color:var(--text);font-size:14px}.chatEmpty span{font-size:11px}
+.chatBottom{padding:9px 11px 8px;border-top:1px solid var(--line);background:var(--card)}
+.chatComposer{display:grid!important;grid-template-columns:minmax(0,1fr) 44px!important;gap:7px!important;margin:0!important;align-items:center}
+.chatComposer input{height:44px!important;min-height:44px!important;width:100%!important;border-radius:14px!important;padding:0 13px!important;font-size:16px!important;margin:0!important}
+.chatComposer button{width:44px!important;min-width:44px!important;height:44px!important;min-height:44px!important;border-radius:14px!important;padding:0!important;font-size:18px!important;display:grid!important;place-items:center!important}
+.chatHint{display:flex;justify-content:space-between;align-items:center;font-size:9px!important;color:var(--muted);margin:5px 3px 0!important}
+@media(max-width:900px){
+ #chatPage{margin-left:-2px!important;margin-right:-2px!important;width:calc(100% + 4px)!important}
+ .chatShell{height:calc(100dvh - 155px);min-height:420px;border-radius:16px}
+}
+@media(max-width:520px){
+ .chatShell{height:calc(100dvh - 142px);min-height:390px;border-radius:14px}
+ .chatTop{padding:9px 10px;gap:8px}
+ .chatTopIcon{width:36px;height:36px;border-radius:12px;font-size:18px}
+ .chatTopText h2{font-size:15px!important}
+ .chatSubtitle{font-size:10px}
+ .chatStatus{font-size:9px;padding:5px 7px}
+ .chatMessages{padding:10px 8px!important;gap:8px!important}
+ .chatMsg{max-width:88%!important;grid-template-columns:30px minmax(0,1fr)!important;gap:6px!important}
+ .chatAvatar{width:30px;height:30px;font-size:11px}
+ .chatBubble{padding:7px 9px 6px}
+ .chatText{font-size:13px}
+ .chatBottom{padding:7px 8px max(7px,env(safe-area-inset-bottom))}
+ .chatComposer{grid-template-columns:minmax(0,1fr) 42px!important}
+ .chatComposer input,.chatComposer button{height:42px!important;min-height:42px!important}
+ .chatComposer button{width:42px!important;min-width:42px!important}
+}
+
 </style>
+<script src="https://telegram.org/js/telegram-web-app.js?63"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head><body><div class="app">
 <div class="head"><div class="brand"><b>Номера РФ</b><span>Собирай. Оценивай. Продавай.</span></div><div class="wallet"><small>БАЛАНС</small><strong id="balance">100 000 ₽</strong></div></div>
-<nav class="tabs"><button class="tab on" data-page="rollPage">Прокрут</button><button class="tab" data-page="storePage">Хранилище · <span id="badge">0</span></button><button class="tab" data-page="statsPage">Статистика</button><button class="tab" data-page="dealerPage">Автосалон</button><button class="tab" data-page="garagePage">Гараж · <span id="garageBadge">0</span>/<span id="garageTabCap">1</span></button><button class="tab" data-page="upgraderPage">Апгрейдер</button><button class="tab" data-page="containersPage">Контейнеры</button><button class="tab" data-page="upgradesPage">Улучшения</button><button class="tab" data-page="settingsPage">Настройки</button></nav>
+<nav class="tabs"><button class="tab on" data-page="rollPage">Прокрут</button><button class="tab" data-page="storePage">Хранилище · <span id="badge">0</span></button><button class="tab" data-page="statsPage">Статистика</button><button class="tab" data-page="dealerPage">Автосалон</button><button class="tab" data-page="garagePage">Гараж · <span id="garageBadge">0</span>/<span id="garageTabCap">1</span></button><button class="tab" data-page="upgraderPage">Апгрейдер</button><button class="tab" data-page="containersPage">Контейнеры</button><button class="tab" data-page="upgradesPage">Улучшения</button><button class="tab" data-page="settingsPage">Настройки</button><button class="tab" data-page="chatPage">💬 Чат</button></nav>
 
 <section class="page on" id="rollPage"><div class="roll"><h1>Нажми на номер, чтобы прокрутить</h1><div class="sub">Прокрут: 3 000 ₽ · выбор региона: +50 000 ₽</div>
 <div style="max-width:680px;margin:18px auto -12px;display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap">
@@ -610,6 +686,31 @@ button,.tab,.buy,.sell,.caseOpen{touch-action:manipulation}
 </div></div>
 <div class="settingsCard"><h3 style="margin-top:0">Экономика прокрута</h3><p style="color:var(--muted);font-size:13px;line-height:1.55">Прокрут стоит <b>3 000 ₽</b>. Обычный номер начинается от <b>100 ₽</b>, необычный — от <b>1 155 ₽</b>, редкий — от <b>66 120 ₽</b>, эпический — от <b>995 500 ₽</b>, легендарный — от <b>24 255 000 ₽</b>. Цена внутри редкости зависит от красоты комбинации букв, цифр и региона.</p></div></section>
 </div>
+
+<section class="page" id="chatPage">
+  <div class="chatShell">
+    <div class="chatTop">
+      <div class="chatTopIcon">💬</div>
+      <div class="chatTopText">
+        <h2>Общий чат</h2>
+        <div class="chatSubtitle">Общение игроков «Номера РФ»</div>
+      </div>
+      <div id="chatStatus" class="chatStatus"><span class="chatStatusDot"></span><span>Подключение</span></div>
+    </div>
+
+    <div id="chatMessages" class="chatMessages">
+      <div class="chatEmpty"><div class="chatEmptyIcon">💬</div><b>Загружаем сообщения</b><span>Подключаемся к общему чату…</span></div>
+    </div>
+
+    <div class="chatBottom">
+      <div class="chatComposer">
+        <input id="chatInput" maxlength="200" autocomplete="off" enterkeyhint="send" placeholder="Сообщение…">
+        <button id="chatSendBtn" type="button" aria-label="Отправить">➤</button>
+      </div>
+      <div class="chatHint"><span>Общий чат</span><span id="chatCounter">0/200</span></div>
+    </div>
+  </div>
+</section>
 <script>
 const L='АВЕКМНОРСТУХ',REG=['01','101','02','102','702','03','103','04','05','105','06','07','08','09','10','11','12','13','113','14','15','16','116','716','17','18','19','95','21','121','22','122','222','23','93','123','193','323','24','124','224','25','125','725','26','126','27','28','29','30','130','31','131','32','33','34','134','35','36','136','37','38','138','39','91','40','41','42','142','43','44','45','46','47','147','48','49','50','90','150','190','250','550','750','790','52','152','252','53','54','154','754','55','155','56','156','57','58','158','59','159','60','61','161','761','62','63','163','763','64','164','65','66','96','196','67','68','69','169','70','71','72','172','73','173','74','174','774','75','76','176','77','97','99','177','197','199','277','299','777','797','799','977','997','78','98','178','198','778','79','80','180','81','181','82','83','84','184','85','185','86','186','87','89','92','192','94','188'],COST=3000,REGION_FEE=25000,SPECIAL_REGION_FEE=50000;
 let bal=100000,inv=[],seq=0,rolls=0,spent=0,earned=0,filter='all',cars=[],carSeq=0,storageCap=50,garageCap=1,isRolling=false;
@@ -1549,6 +1650,213 @@ if($('carSearch'))$('carSearch').oninput=renderDealer;if($('carSort'))$('carSort
 renderContainers();
 if($('fastCaseRoll'))$('fastCaseRoll').onchange=e=>{fastCaseRoll=e.target.checked};
 update();render();renderDealer();renderGarage();
+
+
+/* ===== v0.0.39 Telegram Cloud Save =====
+   CloudStorage values are chunked because Telegram limits one value to 4096 chars.
+   localStorage is a backup/fallback for browser testing.
+*/
+const SAVE_SCHEMA=1;
+const SAVE_PREFIX='nr_save_v1';
+const SAVE_MANIFEST=SAVE_PREFIX+'_manifest';
+const SAVE_CHUNK_SIZE=3500;
+const LOCAL_SAVE_KEY='nr-local-save-v1';
+let saveSystemReady=false,saveBusy=false,lastSavedFingerprint='',saveQueued=false;
+
+function buildSaveData(){
+ return {
+   schema:SAVE_SCHEMA,
+   savedAt:Date.now(),
+   bal,inv,seq,rolls,spent,earned,cars,carSeq,storageCap,garageCap,
+   pendingCasePrize:pendingCasePrize||null,
+   pendingCasePrizes:pendingCasePrizes||[],
+   fastCaseRoll:!!fastCaseRoll
+ };
+}
+function saveFingerprint(data){
+ const copy={...data};delete copy.savedAt;
+ return JSON.stringify(copy);
+}
+function applySaveData(d){
+ if(!d||typeof d!=='object')return false;
+ if(typeof d.bal==='number')bal=d.bal;
+ if(Array.isArray(d.inv))inv=d.inv;
+ if(Number.isFinite(d.seq))seq=d.seq;
+ if(Number.isFinite(d.rolls))rolls=d.rolls;
+ if(Number.isFinite(d.spent))spent=d.spent;
+ if(Number.isFinite(d.earned))earned=d.earned;
+ if(Array.isArray(d.cars))cars=d.cars;
+ if(Number.isFinite(d.carSeq))carSeq=d.carSeq;
+ if(Number.isFinite(d.storageCap))storageCap=Math.max(50,d.storageCap);
+ if(Number.isFinite(d.garageCap))garageCap=Math.max(1,d.garageCap);
+ pendingCasePrize=d.pendingCasePrize||null;
+ pendingCasePrizes=Array.isArray(d.pendingCasePrizes)?d.pendingCasePrizes:[];
+ if(typeof d.fastCaseRoll==='boolean')fastCaseRoll=d.fastCaseRoll;
+ isRolling=false;caseRolling=false;upgradeRolling=false;
+ const fast=$('fastCaseRoll');if(fast)fast.checked=fastCaseRoll;
+ update();render();renderStore();renderDealer();renderGarage();renderUpgrader();renderContainers();renderUpgrades();
+ refreshPendingCasePrize();
+ return true;
+}
+function localBackupWrite(raw){try{localStorage.setItem(LOCAL_SAVE_KEY,raw)}catch(e){}}
+function localBackupRead(){try{return localStorage.getItem(LOCAL_SAVE_KEY)||''}catch(e){return ''}}
+function cloudAvailable(){
+ return !!(window.Telegram&&Telegram.WebApp&&Telegram.WebApp.CloudStorage&&Telegram.WebApp.initData);
+}
+function cloudGet(key){
+ return new Promise((resolve,reject)=>Telegram.WebApp.CloudStorage.getItem(key,(err,val)=>err?reject(err):resolve(val||'')));
+}
+function cloudGetItems(keys){
+ return new Promise((resolve,reject)=>Telegram.WebApp.CloudStorage.getItems(keys,(err,vals)=>err?reject(err):resolve(vals||{})));
+}
+function cloudSet(key,value){
+ return new Promise((resolve,reject)=>Telegram.WebApp.CloudStorage.setItem(key,value,(err,ok)=>err?reject(err):resolve(ok)));
+}
+function cloudRemove(keys){
+ if(!keys.length)return Promise.resolve(true);
+ return new Promise((resolve,reject)=>Telegram.WebApp.CloudStorage.removeItems(keys,(err,ok)=>err?reject(err):resolve(ok)));
+}
+async function writeCloudSave(raw){
+ const chunks=[];
+ for(let i=0;i<raw.length;i+=SAVE_CHUNK_SIZE)chunks.push(raw.slice(i,i+SAVE_CHUNK_SIZE));
+ // Write data first, manifest last: an interrupted save won't advertise incomplete new data.
+ for(let i=0;i<chunks.length;i++)await cloudSet(SAVE_PREFIX+'_chunk_'+i,chunks[i]);
+ let oldCount=0;
+ try{const old=JSON.parse(await cloudGet(SAVE_MANIFEST)||'{}');oldCount=Number(old.chunks)||0}catch(e){}
+ await cloudSet(SAVE_MANIFEST,JSON.stringify({schema:SAVE_SCHEMA,chunks:chunks.length,savedAt:Date.now()}));
+ if(oldCount>chunks.length){
+   const stale=[];for(let i=chunks.length;i<oldCount;i++)stale.push(SAVE_PREFIX+'_chunk_'+i);
+   try{await cloudRemove(stale)}catch(e){}
+ }
+}
+async function readCloudSave(){
+ const mRaw=await cloudGet(SAVE_MANIFEST);
+ if(!mRaw)return '';
+ const m=JSON.parse(mRaw),count=Number(m.chunks)||0;
+ if(count<1||count>1023)throw new Error('Некорректный manifest сохранения');
+ const keys=[];for(let i=0;i<count;i++)keys.push(SAVE_PREFIX+'_chunk_'+i);
+ const vals=await cloudGetItems(keys);
+ let raw='';for(const k of keys){if(typeof vals[k]!=='string')throw new Error('Не хватает части сохранения');raw+=vals[k]}
+ return raw;
+}
+async function saveGame(force=false){
+ if(!saveSystemReady){saveQueued=true;return}
+ const data=buildSaveData(),fingerprint=saveFingerprint(data);
+ if(!force&&fingerprint===lastSavedFingerprint)return;
+ const raw=JSON.stringify(data);
+ localBackupWrite(raw);
+ if(saveBusy){saveQueued=true;return}
+ saveBusy=true;
+ try{
+   if(cloudAvailable())await writeCloudSave(raw);
+   lastSavedFingerprint=fingerprint;
+ }catch(e){
+   console.warn('Cloud save error:',e);
+ }finally{
+   saveBusy=false;
+   if(saveQueued){saveQueued=false;setTimeout(()=>saveGame(false),100)}
+ }
+}
+async function loadGame(){
+ let raw='',source='new';
+ try{
+   if(cloudAvailable()){raw=await readCloudSave();if(raw)source='cloud'}
+ }catch(e){console.warn('Cloud load error:',e)}
+ if(!raw){raw=localBackupRead();if(raw)source='local'}
+ if(raw){
+   try{
+     const data=JSON.parse(raw);
+     if(applySaveData(data)){
+       lastSavedFingerprint=saveFingerprint(buildSaveData());
+       console.info('Прогресс загружен:',source);
+     }
+   }catch(e){console.warn('Save parse error:',e)}
+ }
+ saveSystemReady=true;
+ // Immediately create/sync cloud save if this is a new player or local fallback was used.
+ if(source!=='cloud')saveGame(true);
+}
+function flushSave(){saveGame(true)}
+if(window.Telegram&&Telegram.WebApp){
+ try{Telegram.WebApp.ready();Telegram.WebApp.expand()}catch(e){}
+}
+loadGame();
+// Detect any gameplay state change without having to alter every game mechanic.
+setInterval(()=>saveGame(false),1200);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushSave()});
+window.addEventListener('pagehide',flushSave);
+
+
+/* ===== v0.0.40 Global Chat (Supabase) =====
+   Paste ONLY Project URL and publishable/anon key. NEVER paste service_role.
+*/
+const CHAT_SUPABASE_URL='PASTE_SUPABASE_URL_HERE';
+const CHAT_SUPABASE_KEY='PASTE_SUPABASE_PUBLISHABLE_KEY_HERE';
+let chatDb=null,chatChannel=null,chatLastSend=0,chatLoaded=false;
+function chatConfigured(){return CHAT_SUPABASE_URL.startsWith('https://')&&!CHAT_SUPABASE_URL.includes('PASTE_')&&CHAT_SUPABASE_KEY&&!CHAT_SUPABASE_KEY.includes('PASTE_')}
+function chatEsc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function chatUser(){
+ const u=window.Telegram?.WebApp?.initDataUnsafe?.user;
+ if(u){
+   const name=[u.first_name,u.last_name].filter(Boolean).join(' ').trim()||u.username||'Игрок';
+   return {telegram_id:String(u.id||''),username:(u.username||'').slice(0,32),display_name:name.slice(0,48)}
+ }
+ let guest='';try{guest=localStorage.getItem('nr-chat-guest')||'';if(!guest){guest='Игрок '+Math.floor(1000+Math.random()*9000);localStorage.setItem('nr-chat-guest',guest)}}catch(e){guest='Игрок'}
+ return {telegram_id:'',username:'',display_name:guest};
+}
+function chatSetStatus(t){const e=$('chatStatus');if(e){const clean=String(t).replace(/[🟢🔴]/g,'').trim();e.innerHTML='<span class="chatStatusDot"></span><span>'+chatEsc(clean)+'</span>';e.style.color=String(t).includes('🟢')?'#36c878':String(t).includes('🔴')?'#ef6464':''}}
+function chatMessageHtml(m){
+ const me=chatUser(),mine=!!(me.telegram_id&&m.telegram_id&&String(me.telegram_id)===String(m.telegram_id));
+ const d=new Date(m.created_at),tm=isNaN(d)?'':d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+ const name=String(m.display_name||'Игрок'),initial=(name.trim()[0]||'И').toUpperCase(),uname=m.username?' @'+chatEsc(m.username):'';
+ return `<div class="chatMsg${mine?' mine':''}" data-chat-id="${chatEsc(m.id)}"><div class="chatAvatar">${chatEsc(initial)}</div><div class="chatBubble"><div class="chatMsgHead"><span class="chatName">${chatEsc(name)}${uname}</span><span class="chatTime">${chatEsc(tm)}</span></div><div class="chatText">${chatEsc(m.message)}</div></div></div>`;
+}
+function chatRender(rows){
+ const box=$('chatMessages');if(!box)return;
+ if(!rows||!rows.length){box.innerHTML='<div class="chatEmpty"><div class="chatEmptyIcon">👋</div><b>Здесь пока тихо</b><span>Отправь первое сообщение в общий чат</span></div>';return}
+ box.innerHTML=rows.map(chatMessageHtml).join('');
+ box.scrollTop=box.scrollHeight;
+}
+function chatAppend(m){
+ const box=$('chatMessages');if(!box||!m)return;
+ if(box.querySelector(`[data-chat-id="${CSS.escape(String(m.id))}"]`))return;
+ if(box.querySelector('.chatEmpty'))box.innerHTML='';
+ const wrap=document.createElement('div');wrap.innerHTML=chatMessageHtml(m);
+ box.appendChild(wrap.firstElementChild);
+ while(box.children.length>100)box.firstElementChild.remove();
+ box.scrollTop=box.scrollHeight;
+}
+async function initChat(){
+ if(chatLoaded)return;chatLoaded=true;
+ if(!chatConfigured()){chatSetStatus('Нужна настройка Supabase');const b=$('chatMessages');if(b)b.innerHTML='<div class="chatEmpty">Чат ещё не подключён. Вставь URL и Publishable Key Supabase в HTML.</div>';return}
+ if(!window.supabase){chatSetStatus('Ошибка библиотеки');return}
+ try{
+   chatDb=window.supabase.createClient(CHAT_SUPABASE_URL,CHAT_SUPABASE_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+   const {data,error}=await chatDb.from('chat_messages').select('id,telegram_id,username,display_name,message,created_at').order('created_at',{ascending:false}).limit(100);
+   if(error)throw error;
+   chatRender((data||[]).reverse());chatSetStatus('🟢 Онлайн');
+   chatChannel=chatDb.channel('numbers-rf-global-chat').on('postgres_changes',{event:'INSERT',schema:'public',table:'chat_messages'},p=>chatAppend(p.new)).subscribe(status=>{
+     if(status==='SUBSCRIBED')chatSetStatus('🟢 Онлайн');
+     else if(status==='CHANNEL_ERROR'||status==='TIMED_OUT')chatSetStatus('🔴 Ошибка соединения');
+   });
+ }catch(e){console.warn('Chat init error',e);chatSetStatus('🔴 Ошибка');const b=$('chatMessages');if(b)b.innerHTML='<div class="chatEmpty">Не удалось подключиться к чату. Проверь URL, ключ, RLS и Realtime.</div>'}
+}
+async function sendChatMessage(){
+ const input=$('chatInput'),btn=$('chatSendBtn');if(!input||!chatDb)return;
+ const msg=input.value.trim().replace(/\s+/g,' ').slice(0,200);if(!msg)return;
+ const now=Date.now();if(now-chatLastSend<3000){alert('Подожди 3 секунды перед следующим сообщением.');return}
+ chatLastSend=now;btn.disabled=true;
+ try{
+   const u=chatUser();
+   const {error}=await chatDb.from('chat_messages').insert({telegram_id:u.telegram_id||null,username:u.username||null,display_name:u.display_name,message:msg});
+   if(error)throw error;input.value='';
+ }catch(e){console.warn('Chat send error',e);alert('Не удалось отправить сообщение. Проверь подключение к чату.')}
+ finally{setTimeout(()=>{btn.disabled=false},600)}
+}
+if($('chatSendBtn'))$('chatSendBtn').onclick=sendChatMessage;
+if($('chatInput'))$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();sendChatMessage()}});
+if($('chatInput'))$('chatInput').addEventListener('input',e=>{const c=$('chatCounter');if(c)c.textContent=e.target.value.length+'/200'});
+initChat();
 </script>
 <script>
 (function(){
