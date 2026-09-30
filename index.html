@@ -1790,8 +1790,8 @@ window.addEventListener('pagehide',flushSave);
 /* ===== v0.0.40 Global Chat (Supabase) =====
    Paste ONLY Project URL and publishable/anon key. NEVER paste service_role.
 */
-const CHAT_SUPABASE_URL='PASTE_SUPABASE_URL_HERE';
-const CHAT_SUPABASE_KEY='PASTE_SUPABASE_PUBLISHABLE_KEY_HERE';
+const CHAT_SUPABASE_URL='https://fshzywzxnynzjgleduyq.supabase.co';
+const CHAT_SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZzaHp5d3p4bnluempnbGVkdXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA3NDM5NDEsImV4cCI6MjEwNjMxOTk0MX0.Tpg8E8T3te17AS-A2hxm1Cq4XkUDHS_GEvmuKyVYddY';
 let chatDb=null,chatChannel=null,chatLastSend=0,chatLoaded=false;
 function chatConfigured(){return CHAT_SUPABASE_URL.startsWith('https://')&&!CHAT_SUPABASE_URL.includes('PASTE_')&&CHAT_SUPABASE_KEY&&!CHAT_SUPABASE_KEY.includes('PASTE_')}
 function chatEsc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
