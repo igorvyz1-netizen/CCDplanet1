@@ -608,11 +608,589 @@ button,.tab,.buy,.sell,.caseOpen{touch-action:manipulation}
  .chatComposer button{width:42px!important;min-width:42px!important}
 }
 
+
+/* ===== v0.0.42 Player Profiles ===== */
+.profileHead{display:flex;align-items:center;gap:10px}
+.profileAvatarBtn,.profileAvatarBig{border:0;display:grid;place-items:center;font-weight:900;cursor:pointer;background:linear-gradient(135deg,#7c5cff,#36c878);color:#fff;box-shadow:0 6px 18px rgba(65,70,120,.18)}
+.profileAvatarBtn{width:42px;height:42px;border-radius:50%;font-size:16px;flex:0 0 auto}
+.walletProfile{display:flex;align-items:center;gap:9px}
+.profileModal{position:fixed;inset:0;z-index:10000;background:rgba(10,14,24,.62);display:none;align-items:center;justify-content:center;padding:16px}
+.profileModal.on{display:flex}
+.profileCard{width:min(620px,100%);max-height:min(820px,92dvh);overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 24px 80px rgba(0,0,0,.28)}
+.profileTop{display:flex;gap:13px;align-items:center;position:relative}
+.profileAvatarBig{width:68px;height:68px;border-radius:50%;font-size:25px;flex:0 0 auto}
+.profileTopText{min-width:0}.profileTopText h2{margin:0;font-size:21px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.profileTopText p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.profileClose{position:absolute;right:0;top:0;width:36px;height:36px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);cursor:pointer;font-size:18px}
+.profileEdit{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:16px}
+.profileEdit input{min-width:0;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:var(--panel);color:var(--text);font-size:16px}
+.profileEdit button,.profileAction{border:0;border-radius:12px;padding:10px 14px;background:#7657ff;color:#fff;font-weight:800;cursor:pointer}
+.profileSection{margin-top:18px}.profileSection h3{margin:0 0 9px;font-size:14px}.profileEmpty{padding:16px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:12px;text-align:center}
+.profileShowcase{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.profileShowItem{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:10px;min-width:0}
+.profileShowItem b{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.profileShowItem span{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.profilePicker{display:grid;gap:7px;max-height:210px;overflow:auto;padding-right:2px}
+.profilePick{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:12px;padding:8px 10px;background:var(--panel);font-size:11px}
+.profilePick label{display:flex;align-items:center;gap:8px;min-width:0}.profilePick input{width:18px;height:18px}
+.profileNote{font-size:10px;color:var(--muted);margin-top:8px}
+.chatAvatar{border:0;cursor:pointer;color:inherit}
+.chatAvatar:hover{transform:scale(1.05)}
+@media(max-width:520px){
+ .profileCard{padding:14px;border-radius:19px}
+ .profileAvatarBtn{width:38px;height:38px}
+ .profileShowcase{grid-template-columns:1fr}
+ .walletProfile{gap:6px}.wallet{padding-left:0!important}
+}
+
+
+/* ===== v0.0.43 Profile garage showcase ===== */
+.profileShowcase.profileGarageShowcase{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.profileGarageCar{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:12px;min-width:0}
+.profileGarageCar:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:currentColor;opacity:.8}
+.profileGarageCar.normal{color:#aeb6c5}.profileGarageCar.uncommon{color:#53c983}.profileGarageCar.rare{color:#4b8fff}.profileGarageCar.epic{color:#a66cff}.profileGarageCar.legendary{color:#f0ad35}.profileGarageCar.mythic{color:#ff5b72}
+.profileGarageCarTop{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.profileGarageIcon{font-size:25px}.profileGarageRarity{font-size:9px;font-weight:900;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.profileGarageName{display:block;color:var(--text);font-size:12px;line-height:1.25;margin-top:9px;min-height:30px}
+.profileGaragePlate{margin-top:9px;background:#fff;color:#111;border:2px solid #171717;border-radius:5px;padding:5px 7px;text-align:center;font-weight:900;font-size:12px;letter-spacing:.5px}
+.profileGaragePlate small{font-size:9px;margin-left:3px}.profileGarageNoPlate{margin-top:9px;padding:7px;border:1px dashed var(--line);border-radius:7px;color:var(--muted);font-size:9px;text-align:center}
+.profileGarageValue{display:flex;flex-direction:column;margin-top:10px;color:var(--text)}.profileGarageValue small{font-size:8px;color:var(--muted);font-weight:800}.profileGarageValue strong{font-size:12px;margin-top:2px}
+@media(max-width:620px){.profileShowcase.profileGarageShowcase{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.profileGarageCar{padding:8px;border-radius:12px}.profileGarageIcon{font-size:19px}.profileGarageRarity{font-size:7px}.profileGarageName{font-size:9px;min-height:25px}.profileGaragePlate{font-size:9px;padding:4px 2px}.profileGarageValue strong{font-size:9px}}
+
+
+/* ===== v0.0.44 Profile car plate ===== */
+.profileGaragePlate{display:flex!important;align-items:stretch!important;justify-content:center!important;padding:0!important;background:#f7f7f4!important;color:#0b0b0b!important;border:2px solid #111!important;border-radius:5px!important;overflow:hidden;min-height:28px;letter-spacing:0!important}
+.profilePlateMain{display:flex;align-items:center;justify-content:center;gap:1px;min-width:0;flex:1;padding:3px 4px;font-family:Arial,sans-serif;white-space:nowrap}
+.profilePlateMain span{font-size:10px;font-weight:800}.profilePlateMain strong{font-size:15px;line-height:1;font-weight:900}
+.profilePlateRegion{width:31px;flex:0 0 31px;border-left:1px solid #222;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.profilePlateRegion b{font-size:9px}.profilePlateRegion small{font-size:5px!important;margin:2px 0 0!important;font-weight:900}
+@media(max-width:620px){
+ .profileGaragePlate{min-height:24px}.profilePlateMain{padding:2px;gap:0}.profilePlateMain span{font-size:7px}.profilePlateMain strong{font-size:11px}
+ .profilePlateRegion{width:25px;flex-basis:25px}.profilePlateRegion b{font-size:7px}.profilePlateRegion small{font-size:4px!important}
+}
+
+
+/* ===== v0.0.46 Garage-style plates in profile ===== */
+.profileGaragePlate{
+ display:flex!important;align-items:stretch!important;width:100%!important;box-sizing:border-box!important;
+ min-height:46px!important;margin-top:10px!important;padding:0!important;overflow:hidden!important;
+ background:#fff!important;color:#08090b!important;border:2px solid #222!important;border-radius:7px!important;
+ box-shadow:0 0 0 2px rgba(255,255,255,.12),0 2px 6px rgba(0,0,0,.35)!important;
+ font-family:Arial,"Noto Sans",sans-serif!important;
+}
+.profileGaragePlate .profilePlateMain{
+ flex:1 1 auto!important;min-width:0!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ padding:4px 5px!important;white-space:nowrap!important;overflow:hidden!important;
+}
+.profileGaragePlate .profilePlateMain strong{
+ color:#08090b!important;font-size:20px!important;line-height:1!important;font-weight:900!important;
+ letter-spacing:.4px!important;white-space:nowrap!important;
+}
+.profileGaragePlate .profilePlateRegion{
+ flex:0 0 50px!important;width:50px!important;border-left:1.5px solid #222!important;
+ display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+ padding:2px!important;box-sizing:border-box!important;background:#fff!important;color:#08090b!important;
+}
+.profileGaragePlate .profilePlateRegion b{font-size:16px!important;line-height:1!important;font-weight:900!important;color:#08090b!important}
+.profileGaragePlate .profilePlateRegion small{display:flex!important;align-items:center!important;gap:2px!important;margin-top:3px!important;font-size:6px!important;line-height:1!important;font-weight:900!important;color:#08090b!important}
+.profileGaragePlate .profileFlag{font-size:8px!important;line-height:1!important}
+@media(max-width:620px){
+ .profileShowcase.profileGarageShowcase{grid-template-columns:1fr!important;gap:10px!important}
+ .profileGarageCar{padding:12px!important}
+ .profileGarageName{font-size:13px!important;min-height:auto!important}
+ .profileGaragePlate{min-height:52px!important}
+ .profileGaragePlate .profilePlateMain strong{font-size:25px!important;letter-spacing:.6px!important}
+ .profileGaragePlate .profilePlateRegion{flex-basis:58px!important;width:58px!important}
+ .profileGaragePlate .profilePlateRegion b{font-size:19px!important}
+ .profileGaragePlate .profilePlateRegion small{font-size:7px!important}
+ .profileGaragePlate .profileFlag{font-size:9px!important}
+}
+
+
+/* ===== v0.0.47 FINAL profile license plate layout ===== */
+.profileGarageCar .profileRusPlate{
+ all:unset;
+ box-sizing:border-box!important;
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) 64px!important;
+ width:100%!important;
+ height:58px!important;
+ margin:12px 0 0!important;
+ overflow:hidden!important;
+ background:#fdfdfc!important;
+ color:#050505!important;
+ border:2px solid #202020!important;
+ border-radius:7px!important;
+ box-shadow:0 0 0 2px #d8d8d8,0 3px 8px rgba(0,0,0,.35)!important;
+ font-family:Arial,Helvetica,sans-serif!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateMain{
+ all:unset;
+ box-sizing:border-box!important;
+ min-width:0!important;
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ padding:0 5px!important;
+ background:#fdfdfc!important;
+ color:#050505!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateMain strong{
+ all:unset;
+ display:block!important;
+ color:#050505!important;
+ font-family:Arial,Helvetica,sans-serif!important;
+ font-size:25px!important;
+ line-height:1!important;
+ font-weight:900!important;
+ letter-spacing:-.6px!important;
+ white-space:nowrap!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateRegion{
+ all:unset;
+ box-sizing:border-box!important;
+ min-width:0!important;
+ border-left:1.5px solid #202020!important;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:center!important;
+ justify-content:center!important;
+ background:#fdfdfc!important;
+ color:#050505!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateRegion b{
+ all:unset;
+ display:block!important;
+ color:#050505!important;
+ font-family:Arial,Helvetica,sans-serif!important;
+ font-size:21px!important;
+ line-height:.95!important;
+ font-weight:900!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine{
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:3px!important;
+ margin-top:5px!important;
+ color:#050505!important;
+ font:900 7px/1 Arial,Helvetica,sans-serif!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine i{
+ display:block!important;
+ width:13px!important;
+ height:7px!important;
+ border:1px solid #aaa!important;
+ box-sizing:border-box!important;
+ background:linear-gradient(to bottom,#fff 0 33.33%,#2455d6 33.33% 66.66%,#d52b1e 66.66% 100%)!important;
+}
+@media(max-width:620px){
+ .profileShowcase.profileGarageShowcase{
+   grid-template-columns:1fr!important;
+ }
+ .profileGarageCar .profileRusPlate{
+   grid-template-columns:minmax(0,1fr) 70px!important;
+   height:62px!important;
+ }
+ .profileGarageCar .profileRusPlate .profilePlateMain strong{
+   font-size:30px!important;
+   letter-spacing:-.8px!important;
+ }
+ .profileGarageCar .profileRusPlate .profilePlateRegion b{
+   font-size:24px!important;
+ }
+ .profileGarageCar .profileRusPlate .profileRusLine{
+   font-size:7px!important;
+ }
+}
+
+
+/* ===== v0.0.48 Russian plate proportions from reference ===== */
+.profileGarageCar .profileRusPlate{
+ all:unset;
+ box-sizing:border-box!important;
+ position:relative!important;
+ display:grid!important;
+ grid-template-columns:76% 24%!important;
+ width:100%!important;
+ aspect-ratio:4.7 / 1!important;
+ height:auto!important;
+ min-height:0!important;
+ margin:12px 0 0!important;
+ overflow:hidden!important;
+ background:#f7f7f5!important;
+ color:#050505!important;
+ border:2px solid #1b1b1b!important;
+ border-radius:7px!important;
+ box-shadow:0 0 0 3px #9da0a0,0 2px 6px rgba(0,0,0,.35)!important;
+ font-family:Arial,Helvetica,sans-serif!important;
+}
+.profileGarageCar .profileRusPlate:before,
+.profileGarageCar .profileRusPlate:after{
+ content:""!important;
+ position:absolute!important;
+ top:50%!important;
+ width:7px!important;
+ height:7px!important;
+ margin-top:-3.5px!important;
+ border-radius:50%!important;
+ background:radial-gradient(circle at 35% 30%,#eee 0 15%,#9b9b9b 35%,#5d5d5d 70%,#c9c9c9 100%)!important;
+ z-index:3!important;
+}
+.profileGarageCar .profileRusPlate:before{left:7px!important}
+.profileGarageCar .profileRusPlate:after{right:7px!important}
+.profileGarageCar .profileRusPlate .profilePlateMain{
+ all:unset;
+ box-sizing:border-box!important;
+ min-width:0!important;
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ padding:0 5%!important;
+ background:#f7f7f5!important;
+ color:#050505!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateMain strong{
+ all:unset;
+ display:block!important;
+ color:#050505!important;
+ font-family:Arial,Helvetica,sans-serif!important;
+ font-size:clamp(20px,4.2vw,38px)!important;
+ line-height:.9!important;
+ font-weight:900!important;
+ letter-spacing:-1.2px!important;
+ white-space:nowrap!important;
+ transform:scaleX(.93)!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateRegion{
+ all:unset;
+ box-sizing:border-box!important;
+ min-width:0!important;
+ border-left:2px solid #1b1b1b!important;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:center!important;
+ justify-content:center!important;
+ padding-top:1%!important;
+ background:#f7f7f5!important;
+ color:#050505!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateRegion b{
+ all:unset;
+ display:block!important;
+ color:#050505!important;
+ font-family:Arial,Helvetica,sans-serif!important;
+ font-size:clamp(15px,3.1vw,28px)!important;
+ line-height:.9!important;
+ font-weight:900!important;
+ letter-spacing:-.8px!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine{
+ all:unset;
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:4px!important;
+ margin-top:6%!important;
+ color:#050505!important;
+ font-family:Arial,Helvetica,sans-serif!important;
+ font-size:clamp(6px,1vw,10px)!important;
+ line-height:1!important;
+ font-weight:900!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine i{
+ all:unset;
+ display:block!important;
+ box-sizing:border-box!important;
+ width:clamp(15px,3vw,28px)!important;
+ aspect-ratio:1.65/1!important;
+ border:1px solid #777!important;
+ background:linear-gradient(to bottom,#fff 0 33.333%,#2353b8 33.333% 66.666%,#d52b1e 66.666% 100%)!important;
+}
+.profileShowcase.profileGarageShowcase{
+ grid-template-columns:1fr!important;
+ max-width:680px!important;
+ margin:0 auto!important;
+ gap:12px!important;
+}
+.profileGarageCar{width:100%!important;box-sizing:border-box!important}
+@media(max-width:620px){
+ .profileShowcase.profileGarageShowcase{grid-template-columns:1fr!important;max-width:none!important}
+ .profileGarageCar .profileRusPlate{grid-template-columns:76% 24%!important;aspect-ratio:4.7/1!important}
+ .profileGarageCar .profileRusPlate .profilePlateMain strong{font-size:clamp(21px,9.5vw,34px)!important}
+ .profileGarageCar .profileRusPlate .profilePlateRegion b{font-size:clamp(15px,7vw,25px)!important}
+ .profileGarageCar .profileRusPlate .profileRusLine{font-size:clamp(6px,2.7vw,9px)!important}
+ .profileGarageCar .profileRusPlate .profileRusLine i{width:clamp(15px,7vw,25px)!important}
+}
+
+
+/* ===== v0.0.49 Refined GOST-like plate typography/alignment ===== */
+.profileGarageCar .profileRusPlate .profilePlateMain{
+ gap:1.5%!important;
+ padding:0 6%!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateMain strong,
+.profileGarageCar .profileRusPlate .profilePlateMain .profilePlateLetters{
+ all:unset;
+ display:block!important;
+ color:#050505!important;
+ font-family:"Arial Narrow",Arial,Helvetica,sans-serif!important;
+ line-height:.82!important;
+ font-weight:900!important;
+ white-space:nowrap!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateMain strong{
+ font-size:clamp(21px,4.45vw,40px)!important;
+ letter-spacing:-1.5px!important;
+ transform:scaleX(.88)!important;
+ transform-origin:center!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateMain .profilePlateLetters{
+ font-size:clamp(20px,4.15vw,37px)!important;
+ letter-spacing:-1.8px!important;
+ transform:scaleX(.78)!important;
+ transform-origin:center!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateRegion{
+ position:relative!important;
+ padding:0 7% 0!important;
+ justify-content:flex-start!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateRegion b{
+ margin-top:16%!important;
+ font-family:"Arial Narrow",Arial,Helvetica,sans-serif!important;
+ font-size:clamp(15px,3.15vw,28px)!important;
+ line-height:.82!important;
+ letter-spacing:-1.2px!important;
+ transform:scaleX(.86)!important;
+ transform-origin:center!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine{
+ position:absolute!important;
+ left:0!important;right:0!important;bottom:13%!important;
+ margin:0!important;
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:4%!important;
+ font-family:Arial,Helvetica,sans-serif!important;
+ font-size:clamp(6px,.9vw,9px)!important;
+ line-height:1!important;
+ font-weight:800!important;
+ letter-spacing:0!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine i{
+ width:29%!important;
+ max-width:27px!important;
+ min-width:15px!important;
+ aspect-ratio:1.5/1!important;
+ border:1px solid #777!important;
+ background:linear-gradient(to bottom,#fff 0 33.333%,#0039a6 33.333% 66.666%,#d52b1e 66.666% 100%)!important;
+}
+@media(max-width:620px){
+ .profileGarageCar .profileRusPlate .profilePlateMain{gap:1%!important;padding:0 5%!important}
+ .profileGarageCar .profileRusPlate .profilePlateMain strong{font-size:clamp(22px,10vw,36px)!important;letter-spacing:-1.2px!important}
+ .profileGarageCar .profileRusPlate .profilePlateMain .profilePlateLetters{font-size:clamp(21px,9.2vw,33px)!important;letter-spacing:-1.4px!important}
+ .profileGarageCar .profileRusPlate .profilePlateRegion b{font-size:clamp(16px,7.2vw,26px)!important;margin-top:15%!important}
+ .profileGarageCar .profileRusPlate .profileRusLine{bottom:12%!important;font-size:clamp(6px,2.5vw,8px)!important}
+}
+
+
+/* ===== v0.0.50 Match reference plate glyph sizing ===== */
+.profileGarageCar .profileRusPlate .profilePlateMain{
+ gap:0!important;
+ padding:0 5.5%!important;
+ overflow:hidden!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateMain strong{
+ all:unset;
+ display:block!important;
+ color:#000!important;
+ font-family:"Arial Narrow","Roboto Condensed","Liberation Sans Narrow",Arial,sans-serif!important;
+ font-size:clamp(36px,7.5vw,68px)!important;
+ line-height:.82!important;
+ font-weight:900!important;
+ letter-spacing:-3px!important;
+ white-space:nowrap!important;
+ transform:scaleX(.86)!important;
+ transform-origin:center!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateRegion b{
+ all:unset;
+ display:block!important;
+ margin-top:12%!important;
+ color:#000!important;
+ font-family:"Arial Narrow","Roboto Condensed","Liberation Sans Narrow",Arial,sans-serif!important;
+ font-size:clamp(25px,5.4vw,49px)!important;
+ line-height:.82!important;
+ font-weight:900!important;
+ letter-spacing:-2px!important;
+ white-space:nowrap!important;
+ transform:scaleX(.88)!important;
+ transform-origin:center!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine{
+ bottom:16%!important;
+ gap:4%!important;
+ font-size:clamp(7px,1.25vw,12px)!important;
+ font-weight:900!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine i{
+ width:31%!important;
+ max-width:31px!important;
+ min-width:17px!important;
+}
+@media(max-width:620px){
+ .profileGarageCar .profileRusPlate .profilePlateMain{padding:0 4%!important}
+ .profileGarageCar .profileRusPlate .profilePlateMain strong{
+   font-size:clamp(38px,16vw,62px)!important;
+   letter-spacing:-2.5px!important;
+   transform:scaleX(.86)!important;
+ }
+ .profileGarageCar .profileRusPlate .profilePlateRegion b{
+   font-size:clamp(26px,11.5vw,44px)!important;
+   letter-spacing:-1.8px!important;
+   margin-top:12%!important;
+ }
+ .profileGarageCar .profileRusPlate .profileRusLine{
+   bottom:15%!important;
+   font-size:clamp(7px,3.2vw,11px)!important;
+ }
+}
+
+
+/* ===== v0.0.51 Profile rarity glow + centered region ===== */
+
+/* Right plate block: region and RUS/flag are one centered group */
+.profileGarageCar .profileRusPlate .profilePlateRegion{
+ all:unset;
+ box-sizing:border-box!important;
+ min-width:0!important;
+ border-left:2px solid #1b1b1b!important;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:5px!important;
+ padding:0 7px!important;
+ background:#f7f7f5!important;
+ color:#050505!important;
+}
+.profileGarageCar .profileRusPlate .profilePlateRegion b{
+ all:unset;
+ display:block!important;
+ margin:0!important;
+ color:#000!important;
+ font-family:"Arial Narrow","Roboto Condensed","Liberation Sans Narrow",Arial,sans-serif!important;
+ font-size:clamp(25px,5.4vw,49px)!important;
+ line-height:.78!important;
+ font-weight:900!important;
+ letter-spacing:-2px!important;
+ white-space:nowrap!important;
+ transform:scaleX(.88)!important;
+ transform-origin:center!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine{
+ all:unset;
+ display:flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:4px!important;
+ margin:0!important;
+ color:#000!important;
+ font-family:Arial,Helvetica,sans-serif!important;
+ font-size:clamp(7px,1.25vw,12px)!important;
+ line-height:1!important;
+ font-weight:900!important;
+ white-space:nowrap!important;
+}
+.profileGarageCar .profileRusPlate .profileRusLine i{
+ all:unset;
+ display:block!important;
+ box-sizing:border-box!important;
+ width:clamp(17px,3.2vw,31px)!important;
+ aspect-ratio:1.5/1!important;
+ border:1px solid #777!important;
+ background:linear-gradient(to bottom,#fff 0 33.333%,#0039a6 33.333% 66.666%,#d52b1e 66.666% 100%)!important;
+}
+
+/* Rarity glow: card + plate */
+.profileGarageCar.normal{
+ box-shadow:0 0 12px rgba(174,182,197,.16),inset 0 0 14px rgba(174,182,197,.035)!important;
+}
+.profileGarageCar.uncommon{
+ box-shadow:0 0 16px rgba(83,201,131,.32),inset 0 0 18px rgba(83,201,131,.07)!important;
+ border-color:rgba(83,201,131,.62)!important;
+}
+.profileGarageCar.rare{
+ box-shadow:0 0 20px rgba(75,143,255,.42),inset 0 0 22px rgba(75,143,255,.09)!important;
+ border-color:rgba(75,143,255,.78)!important;
+}
+.profileGarageCar.epic{
+ box-shadow:0 0 23px rgba(166,108,255,.48),inset 0 0 24px rgba(166,108,255,.11)!important;
+ border-color:rgba(166,108,255,.82)!important;
+}
+.profileGarageCar.legendary{
+ box-shadow:0 0 27px rgba(240,173,53,.52),inset 0 0 28px rgba(240,173,53,.12)!important;
+ border-color:rgba(240,173,53,.88)!important;
+}
+.profileGarageCar.mythic{
+ box-shadow:0 0 30px rgba(255,91,114,.58),inset 0 0 30px rgba(255,91,114,.14)!important;
+ border-color:rgba(255,91,114,.92)!important;
+}
+
+.profileGarageCar .profileRusPlate.normal{
+ box-shadow:0 0 0 3px #9da0a0,0 0 12px rgba(174,182,197,.24)!important;
+}
+.profileGarageCar .profileRusPlate.uncommon{
+ box-shadow:0 0 0 3px #9da0a0,0 0 16px rgba(83,201,131,.58)!important;
+}
+.profileGarageCar .profileRusPlate.rare{
+ box-shadow:0 0 0 3px #9da0a0,0 0 19px rgba(75,143,255,.72)!important;
+}
+.profileGarageCar .profileRusPlate.epic{
+ box-shadow:0 0 0 3px #9da0a0,0 0 21px rgba(166,108,255,.78)!important;
+}
+.profileGarageCar .profileRusPlate.legendary{
+ box-shadow:0 0 0 3px #9da0a0,0 0 23px rgba(240,173,53,.82)!important;
+}
+.profileGarageCar .profileRusPlate.mythic{
+ box-shadow:0 0 0 3px #9da0a0,0 0 25px rgba(255,91,114,.88)!important;
+}
+
+@media(max-width:620px){
+ .profileGarageCar .profileRusPlate .profilePlateRegion{gap:4px!important;padding:0 5px!important}
+ .profileGarageCar .profileRusPlate .profilePlateRegion b{
+   font-size:clamp(26px,11.5vw,44px)!important;
+   letter-spacing:-1.8px!important;
+ }
+ .profileGarageCar .profileRusPlate .profileRusLine{
+   font-size:clamp(7px,3.2vw,11px)!important;
+   gap:3px!important;
+ }
+}
+
 </style>
+
+<div class="profileModal" id="profileModal">
+ <div class="profileCard">
+  <div class="profileTop">
+   <div class="profileAvatarBig" id="profileAvatarBig">И</div>
+   <div class="profileTopText"><h2 id="profileName">Игрок</h2><p id="profileMeta">Профиль игрока</p></div>
+   <button class="profileClose" id="profileClose">×</button>
+  </div>
+  <div id="profileOwnControls" style="display:none">
+   <div class="profileEdit"><input id="profileNameInput" maxlength="32" placeholder="Имя игрока"><button id="profileSaveName">Сохранить</button></div>
+   <div class="profileSection"><h3>🚘 Машины на показ <span id="profileCarsCount"></span></h3><div class="profilePicker" id="profileCarsPicker"></div></div>
+   <button class="profileAction" id="profileSaveShowcase" style="width:100%;margin-top:12px">Сохранить витрину</button>
+   <div class="profileNote">Можно выставить до 3 машин. В общий профиль сохраняются только выбранные автомобили.</div>
+  </div>
+  <div class="profileSection"><h3>🚘 Машины игрока</h3><div class="profileShowcase" id="profileCarsShowcase"></div></div>
+ </div>
+</div>
+
 <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head><body><div class="app">
-<div class="head"><div class="brand"><b>Номера РФ</b><span>Собирай. Оценивай. Продавай.</span></div><div class="wallet"><small>БАЛАНС</small><strong id="balance">100 000 ₽</strong></div></div>
+<div class="head"><div class="brand"><b>Номера РФ</b><span>Собирай. Оценивай. Продавай.</span></div><div class="walletProfile"><button class="profileAvatarBtn" id="profileAvatarBtn" title="Профиль">И</button><div class="wallet"><small>БАЛАНС</small><strong id="balance">100 000 ₽</strong></div></div></div>
 <nav class="tabs"><button class="tab on" data-page="rollPage">Прокрут</button><button class="tab" data-page="storePage">Хранилище · <span id="badge">0</span></button><button class="tab" data-page="statsPage">Статистика</button><button class="tab" data-page="dealerPage">Автосалон</button><button class="tab" data-page="garagePage">Гараж · <span id="garageBadge">0</span>/<span id="garageTabCap">1</span></button><button class="tab" data-page="upgraderPage">Апгрейдер</button><button class="tab" data-page="containersPage">Контейнеры</button><button class="tab" data-page="upgradesPage">Улучшения</button><button class="tab" data-page="settingsPage">Настройки</button><button class="tab" data-page="chatPage">💬 Чат</button></nav>
 
 <section class="page on" id="rollPage"><div class="roll"><h1>Нажми на номер, чтобы прокрутить</h1><div class="sub">Прокрут: 3 000 ₽ · выбор региона: +50 000 ₽</div>
@@ -1799,7 +2377,7 @@ function chatUser(){
  const u=window.Telegram?.WebApp?.initDataUnsafe?.user;
  if(u){
    const name=[u.first_name,u.last_name].filter(Boolean).join(' ').trim()||u.username||'Игрок';
-   return {telegram_id:String(u.id||''),username:(u.username||'').slice(0,32),display_name:name.slice(0,48)}
+   return {telegram_id:String(u.id||''),username:(u.username||'').slice(0,32),display_name:((typeof profileLocal!=='undefined'&&profileLocal.display_name)||name).slice(0,48)}
  }
  let guest='';try{guest=localStorage.getItem('nr-chat-guest')||'';if(!guest){guest='Игрок '+Math.floor(1000+Math.random()*9000);localStorage.setItem('nr-chat-guest',guest)}}catch(e){guest='Игрок'}
  return {telegram_id:'',username:'',display_name:guest};
@@ -1809,7 +2387,7 @@ function chatMessageHtml(m){
  const me=chatUser(),mine=!!(me.telegram_id&&m.telegram_id&&String(me.telegram_id)===String(m.telegram_id));
  const d=new Date(m.created_at),tm=isNaN(d)?'':d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
  const name=String(m.display_name||'Игрок'),initial=(name.trim()[0]||'И').toUpperCase(),uname=m.username?' @'+chatEsc(m.username):'';
- return `<div class="chatMsg${mine?' mine':''}" data-chat-id="${chatEsc(m.id)}"><div class="chatAvatar">${chatEsc(initial)}</div><div class="chatBubble"><div class="chatMsgHead"><span class="chatName">${chatEsc(name)}${uname}</span><span class="chatTime">${chatEsc(tm)}</span></div><div class="chatText">${chatEsc(m.message)}</div></div></div>`;
+ return `<div class="chatMsg${mine?' mine':''}" data-chat-id="${chatEsc(m.id)}"><button class="chatAvatar" type="button" data-profile-id="${chatEsc(m.telegram_id||'')}" data-profile-name="${chatEsc(name)}" data-profile-username="${chatEsc(m.username||'')}">${chatEsc(initial)}</button><div class="chatBubble"><div class="chatMsgHead"><span class="chatName">${chatEsc(name)}${uname}</span><span class="chatTime">${chatEsc(tm)}</span></div><div class="chatText">${chatEsc(m.message)}</div></div></div>`;
 }
 function chatRender(rows){
  const box=$('chatMessages');if(!box)return;
@@ -1856,6 +2434,159 @@ async function sendChatMessage(){
 if($('chatSendBtn'))$('chatSendBtn').onclick=sendChatMessage;
 if($('chatInput'))$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();sendChatMessage()}});
 if($('chatInput'))$('chatInput').addEventListener('input',e=>{const c=$('chatCounter');if(c)c.textContent=e.target.value.length+'/200'});
+
+/* ===== v0.0.42 Profiles =====
+ Supabase table expected: player_profiles(telegram_id text primary key, username text,
+ display_name text, showcase_cars jsonb, showcase_plates jsonb, updated_at timestamptz)
+*/
+const PROFILE_LOCAL_KEY='nr-player-profile-v1';
+let profileLocal={display_name:'',showcase_cars:[],showcase_plates:[]};
+function profileLoadLocal(){
+ try{profileLocal={...profileLocal,...JSON.parse(localStorage.getItem(PROFILE_LOCAL_KEY)||'{}')}}catch(e){}
+ const u=chatUser(); if(!profileLocal.display_name)profileLocal.display_name=u.display_name||'Игрок';
+}
+function profileSaveLocal(){try{localStorage.setItem(PROFILE_LOCAL_KEY,JSON.stringify(profileLocal))}catch(e){}}
+function profileMe(){
+ const u=chatUser();
+ return {...u,display_name:(profileLocal.display_name||u.display_name||'Игрок').slice(0,32)};
+}
+function profileInitial(n){return (String(n||'И').trim()[0]||'И').toUpperCase()}
+function profileRefreshHeader(){
+ const b=$('profileAvatarBtn');if(b)b.textContent=profileInitial(profileMe().display_name);
+}
+function profileCarLabel(c){return String(c?.model||c?.name||'Автомобиль')}
+function profilePlateLabel(p){return `${p?.n||p?.num||'Номер'} · ${p?.r||p?.reg||''}`}
+
+function profilePlateParts(p){
+ const raw=String(p?.n||p?.num||'').replace(/\s+/g,'').toUpperCase();
+ const region=String(p?.r||p?.reg||'').trim();
+ const m=raw.match(/^([АВЕКМНОРСТУХA-Z])(\d{3})([АВЕКМНОРСТУХA-Z]{2})$/);
+ if(m)return {left:m[1],digits:m[2],right:m[3],region};
+ return {raw:raw||'—',region};
+}
+
+function profileInstalledPlate(c){
+ if(!c)return null;
+ // Current garage cars normally use installed. Older saves/versions may use plate/number/customPlate.
+ const candidates=[c.installed,c.plate,c.number,c.customPlate,c.installedPlate,c.gosNumber];
+ for(const p of candidates){
+  if(p&&typeof p==='object'){
+   const name=String(p.n||p.num||p.number||p.plate||p.text||'').trim();
+   const region=String(p.r||p.reg||p.region||'').trim();
+   if(name)return {name,region,value:Number(p.v||p.value||0)};
+  }
+  if(typeof p==='string'&&p.trim())return {name:p.trim(),region:String(c.region||c.reg||''),value:0};
+ }
+ // Some old custom-car saves keep the installed plate fields directly on the car.
+ if(c.custom){
+  const name=String(c.n||c.num||c.plateNumber||'').trim();
+  const region=String(c.r||c.reg||c.region||'').trim();
+  if(name)return {name,region,value:Number(c.oldValue||0)};
+ }
+ return null;
+}
+function profileCarPublic(c){
+ const plate=profileInstalledPlate(c);
+ return {
+  name:profileCarLabel(c),
+  value:Number(carRubValue(c)||0),
+  baseValue:Number(carBaseValue(c)||0),
+  rarity:(carRarity(c)?.name||''),
+  rarityRank:(carRarity(c)?.rank||'normal'),
+  plate
+ };
+}
+function profilePlatePublic(p){return {name:String(p?.n||p?.num||'Номер'),region:String(p?.r||p?.reg||''),value:Number(p?.v||0),rarity:String(p?.rarity?.name||p?.rarity||'')}}
+function profileShowItems(target,items,type){
+ const el=$(target);if(!el)return;
+ if(!items?.length){el.innerHTML='<div class="profileEmpty">Ничего не выставлено</div>';return}
+ if(type==='car'){
+  el.classList.add('profileGarageShowcase');
+  el.innerHTML=items.map(x=>{
+   const rank=chatEsc(x.rarityRank||'normal');
+   const pp=x.plate&&x.plate.name?profilePlateParts({n:x.plate.name,r:x.plate.region}):null;
+   const plate=pp?(pp.digits
+    ?`<div class="profileGaragePlate profileRusPlate ${rank}"><div class="profilePlateMain"><strong>${chatEsc(pp.left+pp.digits+pp.right)}</strong></div><div class="profilePlateRegion"><b>${chatEsc(pp.region||'')}</b><div class="profileRusLine"><span>RUS</span><i></i></div></div></div>`
+    :`<div class="profileGaragePlate profileRusPlate"><div class="profilePlateMain"><strong>${chatEsc(pp.raw)}</strong></div><div class="profilePlateRegion"><b>${chatEsc(pp.region||'')}</b><div class="profileRusLine"><span>RUS</span><i></i></div></div></div>`)
+    :'<div class="profileGarageNoPlate">Без номера</div>';
+   return `<div class="profileGarageCar ${rank}">
+    <div class="profileGarageCarTop"><span class="profileGarageIcon">🚘</span><span class="profileGarageRarity">${chatEsc(x.rarity||'Обычная')}</span></div>
+    <b class="profileGarageName">${chatEsc(x.name)}</b>
+    ${plate}
+    <div class="profileGarageValue"><small>СТОИМОСТЬ</small><strong>${money(Number(x.value||0))}</strong></div>
+   </div>`;
+  }).join('');
+ }else{
+  el.classList.remove('profileGarageShowcase');
+  el.innerHTML=items.map(x=>`<div class="profileShowItem"><b>🔢 ${chatEsc(x.name)}${x.region?' · '+chatEsc(x.region):''}</b><span>${chatEsc(x.rarity||'')} · ${money(Number(x.value||0))}</span></div>`).join('');
+ }
+}
+function profileRenderPickers(){
+ const selectedCars=new Set((profileLocal.showcase_cars||[]).map(x=>String(x.id)));
+ const cp=$('profileCarsPicker');
+ cp.innerHTML=cars.length?cars.map(c=>`<div class="profilePick"><label><input type="checkbox" data-profile-car="${chatEsc(c.id)}" ${selectedCars.has(String(c.id))?'checked':''}><span>🚘 ${chatEsc(profileCarLabel(c))}</span></label><b>${money(carRubValue(c))}</b></div>`).join(''):'<div class="profileEmpty">В гараже пока нет машин</div>';
+ const limit=(sel,max)=>{document.querySelectorAll(sel).forEach(x=>x.onchange=()=>{const all=[...document.querySelectorAll(sel)],on=all.filter(y=>y.checked);if(on.length>max){x.checked=false;alert('Можно выбрать максимум '+max+'.')} profilePickerCounts()})};
+ limit('[data-profile-car]',3);profilePickerCounts();
+}
+function profilePickerCounts(){
+ const a=document.querySelectorAll('[data-profile-car]:checked').length;
+ if($('profileCarsCount'))$('profileCarsCount').textContent=`(${a}/3)`;
+}
+async function profileSync(){
+ if(!chatDb)return;
+ const me=profileMe();if(!me.telegram_id)return;
+ profileLocal.showcase_cars=(profileLocal.showcase_cars||[]).map(x=>{
+  const live=cars.find(c=>String(c.id)===String(x.id));
+  return live?{id:String(live.id),public:profileCarPublic(live)}:x;
+ });
+ profileSaveLocal();
+ const payload={telegram_id:me.telegram_id,username:me.username||null,display_name:me.display_name,showcase_cars:(profileLocal.showcase_cars||[]).map(x=>x.public),showcase_plates:[],updated_at:new Date().toISOString()};
+ const {error}=await chatDb.from('player_profiles').upsert(payload,{onConflict:'telegram_id'});
+ if(error)console.warn('Profile sync error',error);
+}
+async function openProfile(id='',fallbackName='',fallbackUsername=''){
+ profileLoadLocal();
+ const me=profileMe(),own=!id||(me.telegram_id&&String(id)===String(me.telegram_id));
+ let data=null;
+ if(own){
+   const liveShowcase=(profileLocal.showcase_cars||[]).map(x=>{
+    const live=cars.find(c=>String(c.id)===String(x.id));
+    return live?profileCarPublic(live):x.public;
+   });
+   data={telegram_id:me.telegram_id,username:me.username,display_name:me.display_name,showcase_cars:liveShowcase,showcase_plates:[]};
+ }else if(chatDb&&id){
+   try{const r=await chatDb.from('player_profiles').select('telegram_id,username,display_name,showcase_cars,showcase_plates').eq('telegram_id',String(id)).maybeSingle();if(!r.error)data=r.data}catch(e){}
+ }
+ data=data||{telegram_id:id,username:fallbackUsername,display_name:fallbackName||'Игрок',showcase_cars:[],showcase_plates:[]};
+ $('profileName').textContent=data.display_name||fallbackName||'Игрок';
+ $('profileAvatarBig').textContent=profileInitial(data.display_name||fallbackName);
+ $('profileMeta').textContent=data.username?'@'+data.username:(own?'Твой профиль':'Профиль игрока');
+ $('profileOwnControls').style.display=own?'block':'none';
+ if(own){$('profileNameInput').value=me.display_name;profileRenderPickers()}
+ profileShowItems('profileCarsShowcase',data.showcase_cars||[],'car');
+  $('profileModal').classList.add('on');
+}
+function closeProfile(){$('profileModal')?.classList.remove('on')}
+profileLoadLocal();profileRefreshHeader();
+$('profileAvatarBtn').onclick=()=>openProfile();
+$('profileClose').onclick=closeProfile;
+$('profileModal').addEventListener('click',e=>{if(e.target===$('profileModal'))closeProfile()});
+document.addEventListener('click',e=>{
+ const a=e.target.closest?.('[data-profile-id]');if(!a)return;
+ openProfile(a.dataset.profileId||'',a.dataset.profileName||'Игрок',a.dataset.profileUsername||'');
+});
+$('profileSaveName').onclick=async()=>{
+ const v=$('profileNameInput').value.trim().replace(/\s+/g,' ').slice(0,32);if(!v)return;
+ profileLocal.display_name=v;profileSaveLocal();profileRefreshHeader();$('profileName').textContent=v;
+ await profileSync();alert('Имя сохранено.');
+};
+$('profileSaveShowcase').onclick=async()=>{
+ const carIds=new Set([...document.querySelectorAll('[data-profile-car]:checked')].map(x=>String(x.dataset.profileCar)));
+ profileLocal.showcase_cars=cars.filter(c=>carIds.has(String(c.id))).slice(0,3).map(c=>({id:String(c.id),public:profileCarPublic(c)}));
+ profileSaveLocal();profileShowItems('profileCarsShowcase',profileLocal.showcase_cars.map(x=>x.public),'car');
+ await profileSync();alert('Витрина сохранена.');
+};
+
 initChat();
 </script>
 <script>
